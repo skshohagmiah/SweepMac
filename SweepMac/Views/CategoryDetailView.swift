@@ -4,9 +4,18 @@ struct CategoryDetailView: View {
     let categoryType: CleanCategoryType
     @ObservedObject var scannerVM: DiskScannerVM
     @ObservedObject var cleanerVM: CleanerVM
+    @Environment(\.colorScheme) private var colorScheme
 
     private var category: CleanCategory? {
         scannerVM.category(for: categoryType)
+    }
+
+    private var pageBackground: Color {
+        colorScheme == .dark ? Color(white: 0.08) : Color(white: 0.94)
+    }
+
+    private var cardBackground: Color {
+        colorScheme == .dark ? Color(white: 0.13) : Color.white
     }
 
     var body: some View {
@@ -24,16 +33,19 @@ struct CategoryDetailView: View {
                 }
             }
         }
-        .background(Color(.windowBackgroundColor))
+        .background(pageBackground)
     }
 
     private var headerView: some View {
         HStack(spacing: 16) {
-            Image(systemName: categoryType.icon)
-                .font(.largeTitle)
-                .foregroundStyle(categoryType.color)
-                .frame(width: 48, height: 48)
-                .background(categoryType.color.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
+            ZStack {
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(categoryType.color.opacity(0.15))
+                    .frame(width: 52, height: 52)
+                Image(systemName: categoryType.icon)
+                    .font(.system(size: 22, weight: .medium))
+                    .foregroundStyle(categoryType.color)
+            }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(categoryType.rawValue)
@@ -57,6 +69,7 @@ struct CategoryDetailView: View {
             }
         }
         .padding(20)
+        .background(cardBackground)
     }
 
     private var scanningView: some View {
@@ -149,7 +162,6 @@ struct CategoryDetailView: View {
 
             Divider()
 
-            // File list
             List {
                 ForEach(category.files) { file in
                     FileRow(

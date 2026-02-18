@@ -38,6 +38,9 @@ class DiskScannerVM: ObservableObject {
         scanProgress = 0
         totalCleanableSize = 0
 
+        // Reset path tracking so we don't double-count between categories
+        await scanner.resetScannedPaths()
+
         let totalCategories = Double(categories.count)
 
         for i in categories.indices {
@@ -52,10 +55,7 @@ class DiskScannerVM: ObservableObject {
             scanProgress = Double(i + 1) / totalCategories
         }
 
-        totalCleanableSize = categories
-            .filter { $0.safeToClean }
-            .reduce(0) { $0 + $1.totalSize }
-
+        recalculateCleanableSize()
         refreshDiskInfo()
         lastScanDate = Date()
         isScanning = false
@@ -70,9 +70,13 @@ class DiskScannerVM: ObservableObject {
         categories[index].files = files
         categories[index].isScanning = false
 
-        totalCleanableSize = categories
-            .filter { $0.safeToClean }
-            .reduce(0) { $0 + $1.totalSize }
+        recalculateCleanableSize()
+    }
+
+    private func recalculateCleanableSize() {
+        let raw = categories.reduce(Int64(0)) { $0 + $1.totalSize }
+        // Never report more cleanable than actual used space
+        totalCleanableSize = min(raw, diskInfo.usedSpace)
     }
 
     func category(for type: CleanCategoryType) -> CleanCategory? {

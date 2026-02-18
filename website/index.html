@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweepMac — Free Open-Source Disk Cleaner for macOS</title>
+    <meta name="description" content="SweepMac is a free, open-source macOS disk cleaner. Scan, inspect, and clean junk files with a beautiful native interface. No subscriptions, no ads.">
+    <meta name="keywords" content="mac disk cleaner, free mac cleaner, open source, macos, clean my mac alternative, disk space">
+    <meta property="og:title" content="SweepMac — Free Disk Cleaner for macOS">
+    <meta property="og:description" content="Reclaim gigabytes of disk space in seconds. Free, open-source, and beautifully native.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+                    <path d="M10 22L16 8L22 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 18H20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+                            <stop stop-color="#6366F1"/>
+                            <stop offset="1" stop-color="#8B5CF6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>SweepMac</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#categories">Categories</a>
+                <a href="#compare">Compare</a>
+                <a href="https://github.com/skshohagmiah/SweepMac" target="_blank" rel="noopener" class="nav-github">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="#download" class="nav-cta">Download Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Free &amp; Open Source &mdash; MIT License
+            </div>
+            <h1 class="hero-title">
+                Clean your Mac.<br>
+                <span class="hero-gradient">Beautifully.</span>
+            </h1>
+            <p class="hero-subtitle">
+                SweepMac scans your system for junk files, shows exactly where your space is going, and frees gigabytes with one click. No subscriptions. No ads. No telemetry.
+            </p>
+            <div class="hero-actions">
+                <a href="#download" class="btn btn-primary btn-lg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download for macOS
+                </a>
+                <a href="https://github.com/skshohagmiah/SweepMac" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">
+                    View on GitHub
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+            </div>
+            <p class="hero-meta">Requires macOS 14 Sonoma or later &middot; Apple Silicon &amp; Intel</p>
+        </div>
+
+        <!-- App Window Mockup -->
+        <div class="hero-mockup">
+            <div class="mockup-window">
+                <div class="mockup-titlebar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="titlebar-text">SweepMac</span>
+                </div>
+                <div class="mockup-body">
+                    <div class="mockup-sidebar">
+                        <div class="sb-item active"><span class="sb-icon">&#9632;</span> Overview</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> System Caches</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> Application Logs</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> Trash</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> System Data</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> Xcode</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> Downloads</div>
+                        <div class="sb-item"><span class="sb-icon">&#9654;</span> Large Files</div>
+                    </div>
+                    <div class="mockup-main">
+                        <div class="mockup-chart-row">
+                            <div class="mockup-ring">
+                                <svg viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#1e1e2e" stroke-width="14"/>
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ring-grad)" stroke-width="14" stroke-dasharray="235 80" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                                    <defs>
+                                        <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#f59e0b"/>
+                                            <stop offset="100%" stop-color="#ef4444"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <div class="ring-label">75%<br><small>used</small></div>
+                            </div>
+                            <div class="mockup-stats">
+                                <div class="stat-row"><span class="stat-dot used"></span>Used <strong>192 GB</strong></div>
+                                <div class="stat-row"><span class="stat-dot free"></span>Free <strong>64 GB</strong></div>
+                                <div class="stat-row"><span class="stat-dot clean"></span>Cleanable <strong>28.4 GB</strong></div>
+                            </div>
+                        </div>
+                        <div class="mockup-bar">
+                            <div class="bar-seg" style="width:25%;background:linear-gradient(135deg,#6366f1,#818cf8)" data-tooltip="Caches 8.2 GB"></div>
+                            <div class="bar-seg" style="width:18%;background:linear-gradient(135deg,#8b5cf6,#a78bfa)" data-tooltip="Xcode 5.6 GB"></div>
+                            <div class="bar-seg" style="width:12%;background:linear-gradient(135deg,#f59e0b,#fbbf24)" data-tooltip="Logs 3.8 GB"></div>
+                            <div class="bar-seg" style="width:10%;background:linear-gradient(135deg,#ef4444,#f87171)" data-tooltip="Trash 3.1 GB"></div>
+                            <div class="bar-seg" style="width:8%;background:linear-gradient(135deg,#10b981,#34d399)" data-tooltip="node_modules 2.4 GB"></div>
+                            <div class="bar-seg" style="width:27%;background:rgba(255,255,255,0.06)" data-tooltip="Free 64 GB"></div>
+                        </div>
+                        <div class="mockup-cards">
+                            <div class="m-card">
+                                <div class="m-card-icon" style="background:rgba(99,102,241,0.15);color:#818cf8">C</div>
+                                <div class="m-card-info"><strong>System Caches</strong><span>8.2 GB</span></div>
+                            </div>
+                            <div class="m-card">
+                                <div class="m-card-icon" style="background:rgba(139,92,246,0.15);color:#a78bfa">X</div>
+                                <div class="m-card-info"><strong>Xcode</strong><span>5.6 GB</span></div>
+                            </div>
+                            <div class="m-card">
+                                <div class="m-card-icon" style="background:rgba(245,158,11,0.15);color:#fbbf24">L</div>
+                                <div class="m-card-info"><strong>App Logs</strong><span>3.8 GB</span></div>
+                            </div>
+                            <div class="m-card">
+                                <div class="m-card-icon" style="background:rgba(239,68,68,0.15);color:#f87171">T</div>
+                                <div class="m-card-info"><strong>Trash</strong><span>3.1 GB</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos / Social proof -->
+    <section class="social-proof">
+        <p>Built with</p>
+        <div class="proof-logos">
+            <span class="proof-item">Swift</span>
+            <span class="proof-sep">&middot;</span>
+            <span class="proof-item">SwiftUI</span>
+            <span class="proof-sep">&middot;</span>
+            <span class="proof-item">Swift Charts</span>
+            <span class="proof-sep">&middot;</span>
+            <span class="proof-item">100% Native macOS</span>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Features</span>
+                <h2>Everything you need.<br>Nothing you don't.</h2>
+                <p>Professional disk cleaning without the bloat or the price tag.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background:rgba(99,102,241,0.12)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>30-Second Scan</h3>
+                    <p>Full system scan in under 30 seconds. See exactly where your space is going with a visual breakdown.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background:rgba(16,185,129,0.12)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Safe by Design</h3>
+                    <p>System-critical paths are blocklisted. Files go to Trash by default. Confirmation before every action.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background:rgba(245,158,11,0.12)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <h3>12 Categories</h3>
+                    <p>Caches, logs, Xcode data, Docker, node_modules, iOS backups, large files, and more. All in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background:rgba(239,68,68,0.12)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>File Inspector</h3>
+                    <p>Browse every file per category. Select individual items, sort by size, and review before deleting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background:rgba(139,92,246,0.12)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <h3>Fully Configurable</h3>
+                    <p>Toggle categories, set file age thresholds, choose between Trash or permanent delete. Your rules.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background:rgba(6,182,212,0.12)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Native macOS UI</h3>
+                    <p>Built with SwiftUI. Sidebar navigation, SF Symbols, Swift Charts, dark mode. Feels like it belongs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Categories</span>
+                <h2>It knows where the junk hides.</h2>
+                <p>SweepMac targets the exact directories that eat your disk space.</p>
+            </div>
+            <div class="cat-grid">
+                <div class="cat-item"><div class="cat-icon ci-blue">&#x1F4BE;</div><div><strong>System Caches</strong><span>~/Library/Caches/</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-orange">&#x1F4C4;</div><div><strong>Application Logs</strong><span>~/Library/Logs/</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-red">&#x1F5D1;</div><div><strong>Trash</strong><span>~/.Trash/</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-purple">&#x1F4E6;</div><div><strong>System Data</strong><span>App Support, Containers</span></div><div class="cat-badge review">Review</div></div>
+                <div class="cat-item"><div class="cat-icon ci-indigo">&#x1F528;</div><div><strong>Xcode</strong><span>DerivedData, Simulators</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-cyan">&#x1F4F1;</div><div><strong>iOS Backups</strong><span>MobileSync/Backup/</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-teal">&#x1F433;</div><div><strong>Docker</strong><span>Images &amp; containers</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-green">&#x1F4E6;</div><div><strong>node_modules</strong><span>Project dependencies</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-brown">&#x1F37A;</div><div><strong>Homebrew Cache</strong><span>~/Library/Caches/Homebrew</span></div><div class="cat-badge safe">Auto-clean</div></div>
+                <div class="cat-item"><div class="cat-icon ci-pink">&#x1F4CE;</div><div><strong>Mail Attachments</strong><span>~/Library/Mail/</span></div><div class="cat-badge review">Review</div></div>
+                <div class="cat-item"><div class="cat-icon ci-rose">&#x1F4C1;</div><div><strong>Large Files</strong><span>Files &gt; 500 MB</span></div><div class="cat-badge review">Review</div></div>
+                <div class="cat-item"><div class="cat-icon ci-mint">&#x2B07;</div><div><strong>Old Downloads</strong><span>Files older than 30 days</span></div><div class="cat-badge review">Review</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="compare" id="compare">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Compare</span>
+                <h2>Why pay for something<br>that should be free?</h2>
+            </div>
+            <div class="compare-table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="highlight">SweepMac</th>
+                            <th>CleanMyMac X</th>
+                            <th>DaisyDisk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td class="highlight"><strong>Free forever</strong></td>
+                            <td>$35/year</td>
+                            <td>$10</td>
+                        </tr>
+                        <tr>
+                            <td>Open Source</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Native SwiftUI</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Xcode Cleanup</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="check dim">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>node_modules Scan</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Docker Cleanup</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>File Inspector</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="check dim">&#10003;</span></td>
+                            <td><span class="check dim">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>No Telemetry</td>
+                            <td class="highlight"><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="download" id="download">
+        <div class="download-glow"></div>
+        <div class="section-inner">
+            <div class="download-content">
+                <h2>Reclaim your disk space.<br>Right now.</h2>
+                <p>Download SweepMac and free up gigabytes in seconds. It's free, it's open source, and it's yours forever.</p>
+                <div class="download-buttons">
+                    <a href="https://github.com/skshohagmiah/SweepMac/releases/latest" class="btn btn-primary btn-xl">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V3a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1h4a1 1 0 0 0 0-2H6.41A8 8 0 1 1 4 12a1 1 0 0 0-2 0 10 10 0 1 0 10-10z"/></svg>
+                        Download .dmg
+                        <span class="btn-sub">macOS 14+ &middot; Universal Binary</span>
+                    </a>
+                    <a href="https://github.com/skshohagmiah/SweepMac" target="_blank" rel="noopener" class="btn btn-outline btn-xl">
+                        Build from Source
+                    </a>
+                </div>
+                <div class="download-note">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    First launch: Right-click the app &rarr; Open to bypass Gatekeeper.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <span class="footer-logo">SweepMac</span>
+                <p>Free, open-source macOS disk cleaner.</p>
+                <p class="footer-copy">&copy; 2026 SweepMac Contributors &middot; MIT License</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#categories">Categories</a>
+                    <a href="#compare">Compare</a>
+                    <a href="#download">Download</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="https://github.com/skshohagmiah/SweepMac" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://github.com/skshohagmiah/SweepMac/issues" target="_blank" rel="noopener">Issues</a>
+                    <a href="https://github.com/skshohagmiah/SweepMac/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

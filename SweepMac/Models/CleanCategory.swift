@@ -5,6 +5,7 @@ enum CleanCategoryType: String, CaseIterable, Identifiable, Codable {
     case systemCaches = "System Caches"
     case applicationLogs = "Application Logs"
     case trash = "Trash"
+    case systemData = "System Data"
     case xcode = "Xcode"
     case iosBackups = "iOS Backups"
     case docker = "Docker"
@@ -21,6 +22,7 @@ enum CleanCategoryType: String, CaseIterable, Identifiable, Codable {
         case .systemCaches: return "internaldrive"
         case .applicationLogs: return "doc.text"
         case .trash: return "trash"
+        case .systemData: return "opticaldiscdrive"
         case .xcode: return "hammer"
         case .iosBackups: return "iphone"
         case .docker: return "shippingbox"
@@ -37,6 +39,7 @@ enum CleanCategoryType: String, CaseIterable, Identifiable, Codable {
         case .systemCaches: return .blue
         case .applicationLogs: return .orange
         case .trash: return .red
+        case .systemData: return Color(red: 0.45, green: 0.45, blue: 0.95)
         case .xcode: return .indigo
         case .iosBackups: return .cyan
         case .docker: return .teal
@@ -53,8 +56,8 @@ enum CleanCategoryType: String, CaseIterable, Identifiable, Codable {
         case .systemCaches, .applicationLogs, .trash, .homebrewCache, .nodeModules:
             return true
         case .xcode, .iosBackups, .docker:
-            return true // selective
-        case .mailAttachments, .largeFiles, .downloads:
+            return true
+        case .systemData, .mailAttachments, .largeFiles, .downloads:
             return false // manual review
         }
     }
@@ -64,6 +67,7 @@ enum CleanCategoryType: String, CaseIterable, Identifiable, Codable {
         case .systemCaches: return "Browser and app caches"
         case .applicationLogs: return "System and app log files"
         case .trash: return "Files in your Trash"
+        case .systemData: return "App data, containers, and support files"
         case .xcode: return "DerivedData, simulators, archives"
         case .iosBackups: return "Old iOS device backups"
         case .docker: return "Docker images and containers"
@@ -80,16 +84,16 @@ enum CleanCategoryType: String, CaseIterable, Identifiable, Codable {
         switch self {
         case .systemCaches:
             return [
-                "\(home)/Library/Caches",
-                "/Library/Caches"
+                "\(home)/Library/Caches"
             ]
         case .applicationLogs:
             return [
-                "\(home)/Library/Logs",
-                "/Library/Logs"
+                "\(home)/Library/Logs"
             ]
         case .trash:
             return ["\(home)/.Trash"]
+        case .systemData:
+            return [] // Handled specially in DiskScanner
         case .xcode:
             return [
                 "\(home)/Library/Developer/Xcode/DerivedData",

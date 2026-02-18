@@ -2,10 +2,19 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var settingsVM: SettingsVM
+    @Environment(\.colorScheme) private var colorScheme
+
+    private var cardBackground: Color {
+        colorScheme == .dark ? Color(white: 0.13) : Color.white
+    }
+
+    private var pageBackground: Color {
+        colorScheme == .dark ? Color(white: 0.08) : Color(white: 0.94)
+    }
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
+            VStack(spacing: 20) {
                 Text("Settings")
                     .font(.title.weight(.bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -88,16 +97,14 @@ struct SettingsView: View {
                     }
 
                     Button("Check for Full Disk Access") {
-                        let hasAccess = PermissionChecker.hasFullDiskAccess()
-                        // In a real app, show an alert with the result
-                        NSLog("Full Disk Access: \(hasAccess)")
+                        PermissionChecker.openFullDiskAccessSettings()
                     }
                     .buttonStyle(.bordered)
                 }
             }
             .padding(24)
         }
-        .background(Color(.windowBackgroundColor))
+        .background(pageBackground)
     }
 
     private func settingsSection<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
@@ -110,7 +117,8 @@ struct SettingsView: View {
             }
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+            .background(cardBackground, in: RoundedRectangle(cornerRadius: 12))
+            .shadow(color: .black.opacity(colorScheme == .dark ? 0.25 : 0.05), radius: 6, y: 2)
         }
     }
 }
