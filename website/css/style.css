@@ -306,6 +306,22 @@ a {
     max-width: 880px;
     margin: 60px auto 0;
     perspective: 1200px;
+    width: 100%;
+}
+
+.mockup-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 120px var(--accent-glow);
+    animation: mockup-float 6s ease-in-out infinite;
+    object-fit: contain;
+    aspect-ratio: auto;
 }
 
 .mockup-window {
