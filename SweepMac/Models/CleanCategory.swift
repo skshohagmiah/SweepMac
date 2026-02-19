@@ -134,6 +134,7 @@ struct CleanCategory: Identifiable {
     var files: [FileItem] = []
     var isScanning: Bool = false
     var isSelected: Bool = true
+    var scanError: String?
 
     var name: String { type.rawValue }
     var icon: String { type.icon }

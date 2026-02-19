@@ -17,6 +17,7 @@ class CleanerVM: ObservableObject {
         let freedBytes: Int64
         let errors: [String]
         let isSuccess: Bool
+        let categoryBreakdown: [(name: String, freedBytes: Int64)]
 
         var message: String {
             if isSuccess {
@@ -26,6 +27,14 @@ class CleanerVM: ObservableObject {
             } else {
                 return "Cleaning failed: \(errors.first ?? "Unknown error")"
             }
+        }
+
+        var breakdownSummary: String? {
+            guard categoryBreakdown.count > 1 else { return nil }
+            return categoryBreakdown
+                .filter { $0.freedBytes > 0 }
+                .map { "\($0.name): \(ByteFormatter.format($0.freedBytes))" }
+                .joined(separator: "\n")
         }
     }
 
@@ -63,29 +72,39 @@ class CleanerVM: ObservableObject {
 
         var totalFreed: Int64 = 0
         var allErrors: [String] = []
+        var breakdown: [(name: String, freedBytes: Int64)] = []
 
         switch action {
         case .category(let category):
             let result = await cleaner.cleanCategory(category, moveToTrash: moveToTrash)
-            processResult(result, freed: &totalFreed, errors: &allErrors)
+            var freed: Int64 = 0
+            processResult(result, freed: &freed, errors: &allErrors)
+            totalFreed += freed
+            breakdown.append((name: category.name, freedBytes: freed))
 
         case .allCategories(let categories):
             let safeCategories = categories.filter { $0.safeToClean && $0.totalSize > 0 }
             for (i, category) in safeCategories.enumerated() {
                 let result = await cleaner.cleanCategory(category, moveToTrash: moveToTrash)
-                processResult(result, freed: &totalFreed, errors: &allErrors)
+                var freed: Int64 = 0
+                processResult(result, freed: &freed, errors: &allErrors)
+                totalFreed += freed
+                breakdown.append((name: category.name, freedBytes: freed))
                 cleanProgress = Double(i + 1) / Double(safeCategories.count)
             }
 
         case .selectedFiles(let files):
             let result = await cleaner.cleanFiles(files, moveToTrash: moveToTrash)
-            processResult(result, freed: &totalFreed, errors: &allErrors)
+            var freed: Int64 = 0
+            processResult(result, freed: &freed, errors: &allErrors)
+            totalFreed += freed
         }
 
         lastResult = CleanResultInfo(
             freedBytes: totalFreed,
             errors: allErrors,
-            isSuccess: allErrors.isEmpty
+            isSuccess: allErrors.isEmpty,
+            categoryBreakdown: breakdown
         )
 
         isCleaning = false

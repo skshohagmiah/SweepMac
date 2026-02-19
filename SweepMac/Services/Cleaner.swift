@@ -11,12 +11,16 @@ actor Cleaner {
     enum CleanError: LocalizedError {
         case unsafePath(String)
         case permissionDenied(String)
+        case fileNotFound(String)
+        case dangerousSymlink(String)
         case unknown(String)
 
         var errorDescription: String? {
             switch self {
             case .unsafePath(let path): return "Blocked unsafe path: \(path)"
             case .permissionDenied(let path): return "Permission denied: \(path)"
+            case .fileNotFound(let path): return "File not found: \(path)"
+            case .dangerousSymlink(let path): return "Dangerous symlink detected: \(path)"
             case .unknown(let msg): return msg
             }
         }
@@ -29,8 +33,22 @@ actor Cleaner {
         var errors: [String] = []
 
         for file in files {
-            guard SafePathValidator.isSafe(file.path) else {
+            // TOCTOU protection: re-resolve and re-validate at deletion time
+            let resolvedPath = (file.path as NSString).resolvingSymlinksInPath
+            guard SafePathValidator.isSafe(resolvedPath) else {
                 errors.append("Skipped unsafe path: \(file.path)")
+                continue
+            }
+
+            // Check for dangerous symlinks
+            guard SafePathValidator.isNotDangerousSymlink(file.path) else {
+                errors.append("Skipped dangerous symlink: \(file.path)")
+                continue
+            }
+
+            // Verify file still exists
+            guard fileManager.fileExists(atPath: file.path) else {
+                errors.append("File no longer exists: \(file.name)")
                 continue
             }
 
@@ -41,6 +59,8 @@ actor Cleaner {
                     try fileManager.removeItem(at: file.url)
                 }
                 freedBytes += file.size
+            } catch let error as NSError where error.domain == NSCocoaErrorDomain && error.code == NSFileWriteNoPermissionError {
+                errors.append("\(file.name): Permission denied")
             } catch {
                 errors.append("\(file.name): \(error.localizedDescription)")
             }
@@ -72,6 +92,13 @@ actor Cleaner {
 
         for item in contents {
             let itemPath = (trashPath as NSString).appendingPathComponent(item)
+
+            // Validate each trash item before deletion
+            guard SafePathValidator.isNotDangerousSymlink(itemPath) else {
+                errors.append("\(item): Skipped dangerous symlink")
+                continue
+            }
+
             do {
                 let attrs = try fileManager.attributesOfItem(atPath: itemPath)
                 let size = (attrs[.size] as? Int64) ?? 0

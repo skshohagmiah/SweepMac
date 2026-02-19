@@ -27,6 +27,9 @@
 		A10000010000000000000018 /* ByteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000018 /* ByteFormatter.swift */; };
 		A10000010000000000000019 /* SafePathValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000019 /* SafePathValidator.swift */; };
 		A10000010000000000000020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000020 /* Assets.xcassets */; };
+		A10000010000000000000021 /* FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000022 /* FileNode.swift */; };
+		A10000010000000000000022 /* FileNodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000023 /* FileNodeRow.swift */; };
+		A10000010000000000000024 /* ScanSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000024 /* ScanSnapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		A20000010000000000000019 /* SafePathValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafePathValidator.swift; sourceTree = "<group>"; };
 		A20000010000000000000020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20000010000000000000021 /* SweepMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SweepMac.entitlements; sourceTree = "<group>"; };
+		A20000010000000000000022 /* FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNode.swift; sourceTree = "<group>"; };
+		A20000010000000000000023 /* FileNodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNodeRow.swift; sourceTree = "<group>"; };
+		A20000010000000000000024 /* ScanSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSnapshot.swift; sourceTree = "<group>"; };
 		A30000010000000000000001 /* SweepMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweepMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,6 +108,7 @@
 				A20000010000000000000002 /* DiskInfo.swift */,
 				A20000010000000000000003 /* CleanCategory.swift */,
 				A20000010000000000000004 /* FileItem.swift */,
+				A20000010000000000000024 /* ScanSnapshot.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +119,7 @@
 				A20000010000000000000005 /* DiskScannerVM.swift */,
 				A20000010000000000000006 /* CleanerVM.swift */,
 				A20000010000000000000007 /* SettingsVM.swift */,
+				A20000010000000000000022 /* FileNode.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 				A20000010000000000000012 /* CleanConfirmSheet.swift */,
 				A20000010000000000000013 /* OnboardingView.swift */,
 				A20000010000000000000014 /* SettingsView.swift */,
+				A20000010000000000000023 /* FileNodeRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,6 +246,9 @@
 				A10000010000000000000017 /* PermissionChecker.swift in Sources */,
 				A10000010000000000000018 /* ByteFormatter.swift in Sources */,
 				A10000010000000000000019 /* SafePathValidator.swift in Sources */,
+				A10000010000000000000021 /* FileNode.swift in Sources */,
+				A10000010000000000000022 /* FileNodeRow.swift in Sources */,
+				A10000010000000000000024 /* ScanSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,7 @@ struct OverviewView: View {
                 diskUsageCard
                 storageBreakdownCard
                 actionBar
+                trendsCard
                 categorySection
             }
             .padding(24)
@@ -239,6 +240,70 @@ struct OverviewView: View {
                     }
                 }
             }
+        }
+    }
+
+    // MARK: - Cleanup Trends
+
+    @ViewBuilder
+    private var trendsCard: some View {
+        let snapshots = ScanSnapshot.loadAll()
+        if snapshots.count >= 2 {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack {
+                    Text("Cleanup Trends")
+                        .font(.headline)
+                    Spacer()
+                    Text("\(snapshots.count) scans")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                }
+
+                Chart(snapshots) { snapshot in
+                    LineMark(
+                        x: .value("Date", snapshot.date),
+                        y: .value("Cleanable", snapshot.totalCleanableSize)
+                    )
+                    .foregroundStyle(Color.indigo.gradient)
+                    .interpolationMethod(.catmullRom)
+
+                    AreaMark(
+                        x: .value("Date", snapshot.date),
+                        y: .value("Cleanable", snapshot.totalCleanableSize)
+                    )
+                    .foregroundStyle(Color.indigo.opacity(0.1).gradient)
+                    .interpolationMethod(.catmullRom)
+
+                    PointMark(
+                        x: .value("Date", snapshot.date),
+                        y: .value("Cleanable", snapshot.totalCleanableSize)
+                    )
+                    .foregroundStyle(Color.indigo)
+                    .symbolSize(30)
+                }
+                .chartYAxis {
+                    AxisMarks { value in
+                        AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5, dash: [4]))
+                            .foregroundStyle(Color.secondary.opacity(0.3))
+                        AxisValueLabel {
+                            if let bytes = value.as(Int64.self) {
+                                Text(ByteFormatter.shortFormat(bytes))
+                                    .font(.caption2)
+                            }
+                        }
+                    }
+                }
+                .chartXAxis {
+                    AxisMarks(values: .automatic(desiredCount: 5)) { value in
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.month(.abbreviated).day())
+                    }
+                }
+                .frame(height: 180)
+            }
+            .padding(20)
+            .background(cardBackground, in: RoundedRectangle(cornerRadius: 16))
+            .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.06), radius: 8, y: 2)
         }
     }
 

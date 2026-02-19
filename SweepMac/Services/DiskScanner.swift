@@ -305,6 +305,61 @@ actor DiskScanner {
         return (totalSize, Array(items.prefix(50)))
     }
 
+    /// Scans the immediate children of a directory (one level deep).
+    /// For child directories, computes their total recursive size.
+    func scanChildren(of directoryPath: String) async -> [FileItem] {
+        guard SafePathValidator.isSafe(directoryPath) else { return [] }
+        guard fileManager.fileExists(atPath: directoryPath) else { return [] }
+
+        let dirURL = URL(fileURLWithPath: directoryPath)
+        guard let contents = try? fileManager.contentsOfDirectory(
+            at: dirURL,
+            includingPropertiesForKeys: [
+                .totalFileAllocatedSizeKey,
+                .contentModificationDateKey,
+                .isDirectoryKey,
+                .isSymbolicLinkKey
+            ],
+            options: [.skipsHiddenFiles]
+        ) else { return [] }
+
+        var items: [FileItem] = []
+
+        for url in contents {
+            guard let resourceValues = try? url.resourceValues(forKeys: [
+                .totalFileAllocatedSizeKey,
+                .contentModificationDateKey,
+                .isDirectoryKey,
+                .isSymbolicLinkKey
+            ]) else { continue }
+
+            if resourceValues.isSymbolicLink == true { continue }
+
+            let isDir = resourceValues.isDirectory ?? false
+            let modDate = resourceValues.contentModificationDate ?? Date.distantPast
+            let size: Int64
+
+            if isDir {
+                size = directorySize(at: url.path)
+            } else {
+                size = Int64(resourceValues.totalFileAllocatedSize ?? 0)
+            }
+
+            guard size > 0 else { continue }
+
+            items.append(FileItem(
+                path: url.path,
+                name: url.lastPathComponent,
+                size: size,
+                modifiedDate: modDate,
+                isDirectory: isDir
+            ))
+        }
+
+        items.sort { $0.size > $1.size }
+        return items
+    }
+
     private func directorySize(at path: String) -> Int64 {
         var size: Int64 = 0
         guard let enumerator = fileManager.enumerator(
